@@ -2,98 +2,110 @@
     extern _printf
     section __TEXT,__text
 
+; This is absolutely not a good way to do it, but it works...
+
 codeAA: db '    global _main', 0
 codeAB: db '    extern _printf', 0
 codeAC: db '    section __TEXT,__text', 0
 codeAD: db '', 0
-codeAE: db '', 0
-codeAF: db 'code:', 0
-codeAG: db '    dq codeAA, codeAB, codeAC, codeAD, codeAE, codeAF, codeAG, codeAH, codeAI, codeAJ', 0
-codeAH: db '    dq codeAK, codeAL, codeAM, codeAN, codeAO, codeAP, codeAQ, codeAR, codeAS, codeAT', 0
-codeAI: db '    dq codeAU, codeAV, codeAW, codeAX, codeAY, codeAZ, codeBA, codeBB, codeBC, codeBD', 0
-codeAJ: db '    dq codeBE, codeBF, codeBG, codeBH, codeBI, codeBJ, codeBK, codeBL, codeBM, codeBN', 0
-codeAK: db '    dq codeBO, codeBP, codeBQ, codeBR, codeBS, codeBT, codeBU, codeBV, codeBW, codeBX', 0
-codeAL: db '    dq codeBY, codeBZ, codeCA, codeCB, codeCC, codeCD, codeCE, codeCF, codeCG, codeCH', 0
-codeAM: db '    dq codeCI, codeCJ, codeCK, codeCL, codeCM, codeCN, codeCO, codeCP, codeCQ, codeCR', 0
-codeAN: db '    dq codeCS, codeCT, codeCU, codeCV, codeCW, codeCX, codeCY, codeCZ, codeDA, codeDB', 0
-codeAO: db '    dq codeDC, codeDD, codeDE, codeDF, codeDG, codeDH, codeDI, codeDJ, codeDK, codeDL', 0
-codeAP: db '    dq codeDM, codeDN', 0
-codeAQ: db '', 0
-codeAR: db 'prefix0: db 99, 111, 100, 101, 0', 0
-codeAS: db 'prefix1: db 58, 32, 100, 98, 32, 39, 0', 0
-codeAT: db 'suffix: db 39, 44, 32, 48, 10, 0', 0
-codeAU: db 'newline: db 10, 0', 0
-codeAV: db '', 0
-codeAW: db '_main:', 0
-codeAX: db '    push rbx', 0
+codeAE: db '; This is absolutely not a good way to do it, but it works...', 0
+codeAF: db '', 0
+codeAG: db '', 0
+codeAH: db 'code:', 0
+codeAI: db '    dq codeAA, codeAB, codeAC, codeAD, codeAE, codeAF, codeAG, codeAH, codeAI, codeAJ', 0
+codeAJ: db '    dq codeAK, codeAL, codeAM, codeAN, codeAO, codeAP, codeAQ, codeAR, codeAS, codeAT', 0
+codeAK: db '    dq codeAU, codeAV, codeAW, codeAX, codeAY, codeAZ, codeBA, codeBB, codeBC, codeBD', 0
+codeAL: db '    dq codeBE, codeBF, codeBG, codeBH, codeBI, codeBJ, codeBK, codeBL, codeBM, codeBN', 0
+codeAM: db '    dq codeBO, codeBP, codeBQ, codeBR, codeBS, codeBT, codeBU, codeBV, codeBW, codeBX', 0
+codeAN: db '    dq codeBY, codeBZ, codeCA, codeCB, codeCC, codeCD, codeCE, codeCF, codeCG, codeCH', 0
+codeAO: db '    dq codeCI, codeCJ, codeCK, codeCL, codeCM, codeCN, codeCO, codeCP, codeCQ, codeCR', 0
+codeAP: db '    dq codeCS, codeCT, codeCU, codeCV, codeCW, codeCX, codeCY, codeCZ, codeDA, codeDB', 0
+codeAQ: db '    dq codeDC, codeDD, codeDE, codeDF, codeDG, codeDH, codeDI, codeDJ, codeDK, codeDL', 0
+codeAR: db '    dq codeDM, codeDN, codeDO, codeDP, codeDQ, codeDR, codeDS, codeDT, codeDU, codeDV', 0
+codeAS: db '    dq codeDW, codeDX', 0
+codeAT: db '', 0
+codeAU: db 'prefix0: db 99, 111, 100, 101, 0', 0
+codeAV: db 'prefix1: db 58, 32, 100, 98, 32, 39, 0', 0
+codeAW: db 'suffix: db 39, 44, 32, 48, 10, 0', 0
+codeAX: db 'newline: db 10, 0', 0
 codeAY: db '', 0
-codeAZ: db '    mov rbx, 0', 0
-codeBA: db 'loop0:', 0
-codeBB: db '    mov rdi, code', 0
-codeBC: db '    mov rdi, [rdi + rbx * 8]', 0
-codeBD: db '    cmp rbx, 4', 0
-codeBE: db '    je next0', 0
-codeBF: db '    call _printf', 0
-codeBG: db '    mov rdi, newline', 0
-codeBH: db '    call _printf', 0
-codeBI: db '    inc rbx', 0
-codeBJ: db '    jmp loop0', 0
-codeBK: db 'next0:', 0
-codeBL: db '', 0
-codeBM: db '    mov rbx, 0', 0
-codeBN: db 'loop1:', 0
-codeBO: db '    mov rdi, code', 0
-codeBP: db '    mov rdi, [rdi + rbx * 8]', 0
-codeBQ: db '    cmp rbx, 92', 0
-codeBR: db '    je next1', 0
-codeBS: db '', 0
-codeBT: db '    mov rdi, prefix0', 0
-codeBU: db '    call _printf', 0
-codeBV: db '', 0
-codeBW: db '    mov rdi, buff', 0
-codeBX: db '    call _printf', 0
-codeBY: db '    mov rdi, buff', 0
+codeAZ: db '_print_code:', 0
+codeBA: db '    push rbx', 0
+codeBB: db '    push rbx', 0
+codeBC: db '', 0
+codeBD: db '    mov rbx, 0', 0
+codeBE: db 'loop0:', 0
+codeBF: db '    mov rdi, code', 0
+codeBG: db '    mov rdi, [rdi + rbx * 8]', 0
+codeBH: db '    cmp rbx, 6', 0
+codeBI: db '    je next0', 0
+codeBJ: db '    call _printf', 0
+codeBK: db '    mov rdi, newline', 0
+codeBL: db '    call _printf', 0
+codeBM: db '    inc rbx', 0
+codeBN: db '    jmp loop0', 0
+codeBO: db 'next0:', 0
+codeBP: db '', 0
+codeBQ: db '    mov rbx, 0', 0
+codeBR: db 'loop1:', 0
+codeBS: db '    mov rdi, code', 0
+codeBT: db '    mov rdi, [rdi + rbx * 8]', 0
+codeBU: db '    cmp rbx, 102', 0
+codeBV: db '    je next1', 0
+codeBW: db '', 0
+codeBX: db '    mov rdi, prefix0', 0
+codeBY: db '    call _printf', 0
 codeBZ: db '', 0
-codeCA: db '    inc byte [rdi + 1]', 0
-codeCB: db '    cmp byte [rdi + 1], 91', 0
-codeCC: db '    jne loop1_2', 0
+codeCA: db '    mov rdi, buff', 0
+codeCB: db '    call _printf', 0
+codeCC: db '    mov rdi, buff', 0
 codeCD: db '', 0
-codeCE: db '    inc byte [rdi]', 0
-codeCF: db '    mov byte [rdi + 1], 65', 0
-codeCG: db '', 0
-codeCH: db 'loop1_2:', 0
-codeCI: db '    mov rdi, prefix1', 0
-codeCJ: db '    call _printf', 0
+codeCE: db '    inc byte [rdi + 1]', 0
+codeCF: db '    cmp byte [rdi + 1], 91', 0
+codeCG: db '    jne loop1_2', 0
+codeCH: db '', 0
+codeCI: db '    inc byte [rdi]', 0
+codeCJ: db '    mov byte [rdi + 1], 65', 0
 codeCK: db '', 0
-codeCL: db '    mov rdi, code', 0
-codeCM: db '    mov rdi, [rdi + rbx * 8]', 0
+codeCL: db 'loop1_2:', 0
+codeCM: db '    mov rdi, prefix1', 0
 codeCN: db '    call _printf', 0
 codeCO: db '', 0
-codeCP: db '    mov rdi, suffix', 0
-codeCQ: db '    call _printf', 0
-codeCR: db '', 0
-codeCS: db '    inc rbx', 0
-codeCT: db '    jmp loop1', 0
-codeCU: db 'next1:', 0
+codeCP: db '    mov rdi, code', 0
+codeCQ: db '    mov rdi, [rdi + rbx * 8]', 0
+codeCR: db '    call _printf', 0
+codeCS: db '', 0
+codeCT: db '    mov rdi, suffix', 0
+codeCU: db '    call _printf', 0
 codeCV: db '', 0
-codeCW: db '    mov rbx, 4', 0
-codeCX: db 'loop2:', 0
-codeCY: db '    mov rdi, code', 0
-codeCZ: db '    mov rdi, [rdi + rbx * 8]', 0
-codeDA: db '    cmp rbx, 92', 0
-codeDB: db '    je next2', 0
-codeDC: db '    call _printf', 0
-codeDD: db '    mov rdi, newline', 0
-codeDE: db '    call _printf', 0
-codeDF: db '    inc rbx', 0
-codeDG: db '    jmp loop2', 0
-codeDH: db 'next2:', 0
-codeDI: db '', 0
-codeDJ: db '    pop rbx', 0
-codeDK: db '    ret', 0
-codeDL: db '', 0
-codeDM: db '    section .data', 0
-codeDN: db 'buff: db 65, 65, 0', 0
+codeCW: db '    inc rbx', 0
+codeCX: db '    jmp loop1', 0
+codeCY: db 'next1:', 0
+codeCZ: db '', 0
+codeDA: db '    mov rbx, 6', 0
+codeDB: db 'loop2:', 0
+codeDC: db '    mov rdi, code', 0
+codeDD: db '    mov rdi, [rdi + rbx * 8]', 0
+codeDE: db '    cmp rbx, 102', 0
+codeDF: db '    je next2', 0
+codeDG: db '    call _printf', 0
+codeDH: db '    mov rdi, newline', 0
+codeDI: db '    call _printf', 0
+codeDJ: db '    inc rbx', 0
+codeDK: db '    jmp loop2', 0
+codeDL: db 'next2:', 0
+codeDM: db '', 0
+codeDN: db '    pop rbx', 0
+codeDO: db '    pop rbx', 0
+codeDP: db '    ret', 0
+codeDQ: db '', 0
+codeDR: db '_main:', 0
+codeDS: db '    ; I dont like assembly :/', 0
+codeDT: db '    call _print_code', 0
+codeDU: db '    ret', 0
+codeDV: db '', 0
+codeDW: db '    section .data', 0
+codeDX: db 'buff: db 65, 65, 0', 0
 
 code:
     dq codeAA, codeAB, codeAC, codeAD, codeAE, codeAF, codeAG, codeAH, codeAI, codeAJ
@@ -105,21 +117,23 @@ code:
     dq codeCI, codeCJ, codeCK, codeCL, codeCM, codeCN, codeCO, codeCP, codeCQ, codeCR
     dq codeCS, codeCT, codeCU, codeCV, codeCW, codeCX, codeCY, codeCZ, codeDA, codeDB
     dq codeDC, codeDD, codeDE, codeDF, codeDG, codeDH, codeDI, codeDJ, codeDK, codeDL
-    dq codeDM, codeDN
+    dq codeDM, codeDN, codeDO, codeDP, codeDQ, codeDR, codeDS, codeDT, codeDU, codeDV
+    dq codeDW, codeDX
 
 prefix0: db 99, 111, 100, 101, 0
 prefix1: db 58, 32, 100, 98, 32, 39, 0
 suffix: db 39, 44, 32, 48, 10, 0
 newline: db 10, 0
 
-_main:
+_print_code:
+    push rbx
     push rbx
 
     mov rbx, 0
 loop0:
     mov rdi, code
     mov rdi, [rdi + rbx * 8]
-    cmp rbx, 4
+    cmp rbx, 6
     je next0
     call _printf
     mov rdi, newline
@@ -132,7 +146,7 @@ next0:
 loop1:
     mov rdi, code
     mov rdi, [rdi + rbx * 8]
-    cmp rbx, 92
+    cmp rbx, 102
     je next1
 
     mov rdi, prefix0
@@ -164,11 +178,11 @@ loop1_2:
     jmp loop1
 next1:
 
-    mov rbx, 4
+    mov rbx, 6
 loop2:
     mov rdi, code
     mov rdi, [rdi + rbx * 8]
-    cmp rbx, 92
+    cmp rbx, 102
     je next2
     call _printf
     mov rdi, newline
@@ -178,6 +192,12 @@ loop2:
 next2:
 
     pop rbx
+    pop rbx
+    ret
+
+_main:
+    ; I dont like assembly :/
+    call _print_code
     ret
 
     section .data
