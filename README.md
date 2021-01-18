@@ -15,7 +15,7 @@ clang -Wall -Wextra -Werror Colleen.c -o Colleen ; ./Colleen
 
 ```sh
 cd first/ASM
-nasm -f macho64 Colleen.s -o Sully.o ; clang -Wall -Wextra -Werror Colleen.o -o Colleen ; ./Colleen
+nasm -f macho64 Colleen.s -o Colleen.o ; clang -Wall -Wextra -Werror Colleen.o -o Colleen ; ./Colleen
 ```
 
 ### Second
