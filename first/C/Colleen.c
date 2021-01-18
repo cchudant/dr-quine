@@ -7,7 +7,7 @@ void print_code(char **code) {
     }
     for (int i = 0; i < 32; i++) {
         printf("        \"");
-        for (int j = 0; j < strlen(code[i]); j++) {
+        for (int j = 0; j < (int)strlen(code[i]); j++) {
             if (code[i][j] == '\\' || code[i][j] == '"')
                 printf("\\");
             printf("%c", code[i][j]);
@@ -33,7 +33,7 @@ int main() {
         "    }",
         "    for (int i = 0; i < 32; i++) {",
         "        printf(\"        \\\"\");",
-        "        for (int j = 0; j < strlen(code[i]); j++) {",
+        "        for (int j = 0; j < (int)strlen(code[i]); j++) {",
         "            if (code[i][j] == '\\\\' || code[i][j] == '\"')",
         "                printf(\"\\\\\");",
         "            printf(\"%c\", code[i][j]);",

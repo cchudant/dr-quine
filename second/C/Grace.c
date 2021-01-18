@@ -33,7 +33,7 @@ FT(
         "    }" COMMA
         "    for (int i = 0; i < 33; i++) {" COMMA
         "        fprintf(f, \"        \\\"\");" COMMA
-        "        for (int j = 0; j < strlen(code[i]); j++) {" COMMA
+        "        for (int j = 0; j < (int)strlen(code[i]); j++) {" COMMA
         "            if (code[i][j] == '\\\\' || code[i][j] == '\"')" COMMA
         "                fprintf(f, \"\\\\\");" COMMA
         "            fprintf(f, \"%c\", code[i][j]);" COMMA
@@ -53,7 +53,7 @@ FT(
     }
     for (int i = 0; i < 33; i++) {
         fprintf(f, "        \"");
-        for (int j = 0; j < strlen(code[i]); j++) {
+        for (int j = 0; j < (int)strlen(code[i]); j++) {
             if (code[i][j] == '\\' || code[i][j] == '"')
                 fprintf(f, "\\");
             fprintf(f, "%c", code[i][j]);
