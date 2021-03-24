@@ -1,4 +1,4 @@
-#include <printf.h>
+#include <stdio.h>
 #include <string.h>
 
 void print_code(char **code) {
@@ -24,7 +24,7 @@ void print_code(char **code) {
  */
 int main() {
     char *code[] = {
-        "#include <printf.h>",
+        "#include <stdio.h>",
         "#include <string.h>",
         "",
         "void print_code(char **code) {",

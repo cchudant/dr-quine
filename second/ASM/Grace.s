@@ -1,12 +1,12 @@
-    global _main
-    extern _fprintf
-    extern _fopen
-    section __TEXT,__text
+    global main
+    extern fprintf
+    extern fopen
+    section .text
 
-codeAA: db '    global _main', 0
-codeAB: db '    extern _fprintf', 0
-codeAC: db '    extern _fopen', 0
-codeAD: db '    section __TEXT,__text', 0
+codeAA: db '    global main', 0
+codeAB: db '    extern fprintf', 0
+codeAC: db '    extern fopen', 0
+codeAD: db '    section .text', 0
 codeAE: db '', 0
 codeAF: db '', 0
 codeAG: db 'code:', 0
@@ -32,14 +32,14 @@ codeAZ: db 'str_w: db 119, 0', 0
 codeBA: db '', 0
 codeBB: db '; This file looks horrible', 0
 codeBC: db '', 0
-codeBD: db '_main:', 0
+codeBD: db 'main:', 0
 codeBE: db '    push rbp', 0
 codeBF: db '    push rbx', 0
 codeBG: db '    push rbx', 0
 codeBH: db '', 0
 codeBI: db '    mov rdi, filename', 0
 codeBJ: db '    mov rsi, str_w', 0
-codeBK: db '    call _fopen', 0
+codeBK: db '    call fopen', 0
 codeBL: db '    mov rbp, rax', 0
 codeBM: db '', 0
 codeBN: db '    mov rbx, 0', 0
@@ -49,10 +49,10 @@ codeBQ: db '    mov rsi, [rsi + rbx * 8]', 0
 codeBR: db '    cmp rbx, 5', 0
 codeBS: db '    je next0', 0
 codeBT: db '    mov rdi, rbp', 0
-codeBU: db '    call _fprintf', 0
+codeBU: db '    call fprintf', 0
 codeBV: db '    mov rsi, newline', 0
 codeBW: db '    mov rdi, rbp', 0
-codeBX: db '    call _fprintf', 0
+codeBX: db '    call fprintf', 0
 codeBY: db '    inc rbx', 0
 codeBZ: db '    jmp loop0', 0
 codeCA: db 'next0:', 0
@@ -66,11 +66,11 @@ codeCH: db '    je next1', 0
 codeCI: db '', 0
 codeCJ: db '    mov rsi, prefix0', 0
 codeCK: db '    mov rdi, rbp', 0
-codeCL: db '    call _fprintf', 0
+codeCL: db '    call fprintf', 0
 codeCM: db '', 0
 codeCN: db '    mov rsi, buff', 0
 codeCO: db '    mov rdi, rbp', 0
-codeCP: db '    call _fprintf', 0
+codeCP: db '    call fprintf', 0
 codeCQ: db '    mov rsi, buff', 0
 codeCR: db '', 0
 codeCS: db '    inc byte [rsi + 1]', 0
@@ -83,16 +83,16 @@ codeCY: db '', 0
 codeCZ: db 'loop1_2:', 0
 codeDA: db '    mov rsi, prefix1', 0
 codeDB: db '    mov rdi, rbp', 0
-codeDC: db '    call _fprintf', 0
+codeDC: db '    call fprintf', 0
 codeDD: db '', 0
 codeDE: db '    mov rsi, code', 0
 codeDF: db '    mov rsi, [rsi + rbx * 8]', 0
 codeDG: db '    mov rdi, rbp', 0
-codeDH: db '    call _fprintf', 0
+codeDH: db '    call fprintf', 0
 codeDI: db '', 0
 codeDJ: db '    mov rsi, suffix', 0
 codeDK: db '    mov rdi, rbp', 0
-codeDL: db '    call _fprintf', 0
+codeDL: db '    call fprintf', 0
 codeDM: db '', 0
 codeDN: db '    inc rbx', 0
 codeDO: db '    jmp loop1', 0
@@ -105,10 +105,10 @@ codeDU: db '    mov rsi, [rsi + rbx * 8]', 0
 codeDV: db '    cmp rbx, 117', 0
 codeDW: db '    je next2', 0
 codeDX: db '    mov rdi, rbp', 0
-codeDY: db '    call _fprintf', 0
+codeDY: db '    call fprintf', 0
 codeDZ: db '    mov rsi, newline', 0
 codeEA: db '    mov rdi, rbp', 0
-codeEB: db '    call _fprintf', 0
+codeEB: db '    call fprintf', 0
 codeEC: db '    inc rbx', 0
 codeED: db '    jmp loop2', 0
 codeEE: db 'next2:', 0
@@ -144,14 +144,14 @@ str_w: db 119, 0
 
 ; This file looks horrible
 
-_main:
+main:
     push rbp
     push rbx
     push rbx
 
     mov rdi, filename
     mov rsi, str_w
-    call _fopen
+    call fopen
     mov rbp, rax
 
     mov rbx, 0
@@ -161,10 +161,10 @@ loop0:
     cmp rbx, 5
     je next0
     mov rdi, rbp
-    call _fprintf
+    call fprintf
     mov rsi, newline
     mov rdi, rbp
-    call _fprintf
+    call fprintf
     inc rbx
     jmp loop0
 next0:
@@ -178,11 +178,11 @@ loop1:
 
     mov rsi, prefix0
     mov rdi, rbp
-    call _fprintf
+    call fprintf
 
     mov rsi, buff
     mov rdi, rbp
-    call _fprintf
+    call fprintf
     mov rsi, buff
 
     inc byte [rsi + 1]
@@ -195,16 +195,16 @@ loop1:
 loop1_2:
     mov rsi, prefix1
     mov rdi, rbp
-    call _fprintf
+    call fprintf
 
     mov rsi, code
     mov rsi, [rsi + rbx * 8]
     mov rdi, rbp
-    call _fprintf
+    call fprintf
 
     mov rsi, suffix
     mov rdi, rbp
-    call _fprintf
+    call fprintf
 
     inc rbx
     jmp loop1
@@ -217,10 +217,10 @@ loop2:
     cmp rbx, 117
     je next2
     mov rdi, rbp
-    call _fprintf
+    call fprintf
     mov rsi, newline
     mov rdi, rbp
-    call _fprintf
+    call fprintf
     inc rbx
     jmp loop2
 next2:

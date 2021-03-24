@@ -1,4 +1,4 @@
-#include <printf.h>
+#include <stdio.h>
 #include <string.h>
 #include <unistd.h>
 
@@ -6,7 +6,7 @@ int i = 5;
 
 int main(int argc, char* argv[]) {
     char *code[] = {
-        "#include <printf.h>",
+        "#include <stdio.h>",
         "#include <string.h>",
         "#include <unistd.h>",
         "",

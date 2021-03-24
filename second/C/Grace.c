@@ -1,4 +1,4 @@
-#include <printf.h>
+#include <stdio.h>
 #include <string.h>
 
 #define FT(x)int main(){ x }
@@ -11,7 +11,7 @@
 
 FT(
     char *code[] = {
-        "#include <printf.h>" COMMA
+        "#include <stdio.h>" COMMA
         "#include <string.h>" COMMA
         "" COMMA
         "#define FT(x)int main(){ x }" COMMA
